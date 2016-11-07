@@ -1,0 +1,266 @@
+html {
+	box-sizing: border-box;
+}
+*,
+*::before,
+*::after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+	box-sizing: inherit;
+}
+body{
+	font-family: $font-main;
+	font-size: $basic-size;
+	color: $secondary-text-color;
+	background: $bg-color;
+}
+ul{
+	margin: 0;
+}
+a{
+	color: currentColor;
+	@include transition(0.3s);
+	&:hover{
+		color: $accent-color;
+	}
+}
+// headings styles
+@for $i from 1 through 3{
+	.#{h}#{$i}{
+		font-size: $h1-size - ($i * 0.5);
+		color: $primary-color-text;
+	}
+}
+.container{
+	max-width: 1200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+// Main
+.main-content{
+	display: flex;
+	flex-wrap: wrap;
+	background-color: $divider-color;
+	color: $primary-color-text;
+}
+.todo-app{
+	flex-basis: calc(50% - 20px);
+	margin: 10px;
+	background-color: $primary-color;
+}
+.todo-app__header{
+	width: 100%;
+	height: 80px;
+	padding: 15px;
+	position: relative;
+	background-color: $primary-color-dark;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+	margin: 0 0 15px 0;
+	input{
+		background-color: $primary-color;
+		color: $primary-color-text;
+		text-indent: 18px; // could be padding
+		height: 50px;
+		width: 100%;
+		float: left;
+		padding: 0 60px 0 0;
+		border-radius: 5px;
+		border-bottom-right-radius: 25px;
+		border-top-right-radius: 25px;
+		border: 0px;
+		box-shadow: none;
+		outline: none;
+		appearance: none;
+		&::-webkit-input-placeholder{
+			color: $primary-color-text;
+			@include transition(0.6s);
+		}
+		&::-ms-input-placeholder{
+			color: $primary-color-text;
+			@include transition(0.6s);
+		}
+		&::-moz-input-placeholder{
+			color: $primary-color-text;
+			@include transition(0.6s);
+		}
+		&:focus{
+			&::-webkit-input-placeholder{
+				opacity: 0;
+			}
+			&::-ms-input-placeholder{
+				opacity: 0;
+			}
+			&::-moz-input-placeholder{
+				opacity: 0;
+			}
+		}
+	}
+	button{
+		width: 50px;
+		height: 50px;
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		z-index: 2;
+		appearance: none;
+		background-color: $accent-color;
+		border-radius: 100%;
+		border: 0;
+		outline: none;
+		cursor: pointer;;
+		@include transition(0.3s);
+	  	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);	
+	  	&:hover{
+	  		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	  	}
+	  svg{
+	  	width: 24px;
+	  	height: 24px;
+	  	position: absolute;
+	  	top: 50%;
+	  	left: 50%;
+	  	margin: -12px 0 0 -12px;
+	  	.fill{
+	  		fill: $bg-color;
+	  	}
+	  }
+	}
+}
+ul.todo{
+	width: 100%;
+	float: left;
+	padding: 5px;
+	list-style: none;
+	li{
+		width: 100%;
+		min-height: 50px;
+		position: relative;
+		float: left;
+		border-radius: 5px;
+		background-color: #fff;
+		box-shadow: 0px 1px 4px rgba(0,0,0,0.3);
+		margin: 0 0 10px 0;
+    	padding: 14px 100px 14px 14px;
+		color: $primary-text-color;
+		line-height: 22px;
+		&:last-of-type{
+			margin: 0;
+		}
+	}
+	.todo__buttons{
+		width: 100px;
+		height: 50px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		button{
+			width: 50px;
+			height: 50px;
+			float: left;
+			background: none;
+			appearance: none;
+			box-shadow: none;
+			border: 0;
+			outline: 0;
+			position: relative;
+			&:last-of-type::before{
+				content: '';
+				position: absolute;
+				top: 10px;
+				left: 0;
+				width: 1px;
+				height: 30px;
+				background-color: $divider-color;
+				opacity: 0.4;
+			}
+			svg{
+				width: 28px;
+				height: 28px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin: -14px 0 0 -14px;
+			}
+		}
+		.remove,
+		.complete{
+			@include transition(0.3s);
+			svg{
+				@include transition(0.2s);
+			}
+		}
+		.remove{
+			.fill{
+				fill: $divider-color;
+			}
+			&:hover{
+				.fill{
+					fill: red;
+				}
+			}
+		}
+		.complete{
+			.fill{
+				fill: $green;
+			}
+			svg{
+				border-radius: 100%;
+				border: 1.5px solid $light-green;
+				padding: 3px;
+			}
+			&:hover{
+				svg{
+					background: rgba(0, 150, 136, 0.75);
+				}
+				.fill{
+					fill: $bg-color;
+				}
+			}
+		}
+	}
+	&.completed{
+		.complete{
+			.fill{
+				fill: $bg-color;
+			}
+			&:hover{
+				svg{
+					background: $light-green;
+				}
+			}
+			svg{
+				border: 0;
+				background: $light-green;
+			}
+		}
+		&:not(:empty){
+			opacity: 0.5;
+			position: relative;
+			padding-top: 60px;
+			&:before{
+				content: '';
+				position: absolute;
+				width: 150px;
+				height: 1px;
+				top: 30px;
+				left: 50%;
+				margin: 0 0 0 -75px;
+				background: $divider-color;
+			}
+		}
+	}
+}
+// aside
+aside{
+	background-color: $divider-color;
+	color: $primary-text-color;
+	padding: 20px 0 30px 15px;
+}
+// page footer
+footer{
+	text-align: center;
+	font-size: 80%;
+	.fill{
+		fill: $accent-color;
+	}
+}

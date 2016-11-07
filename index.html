@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>To do list developed with Javascript</title>
+	<!-- stylesheet -->
+	<link rel="stylesheet" href="dist/css/style.css">
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1>Simple todo list with plain JavaScript</h1>
+		</header>
+		<main class="main-content">
+			<section class="todo-app">
+				<header class="todo-app__header">
+					<input type="text" placeholder="Add an activity..." id="item">
+					<button id="add">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="20" viewBox="0 0 16 20"><path class="fill" d="M15.714 8.214v2.143q0 0.446-0.313 0.759t-0.759 0.313h-4.643v4.643q0 0.446-0.313 0.759t-0.759 0.313h-2.143q-0.446 0-0.759-0.313t-0.313-0.759v-4.643h-4.643q-0.446 0-0.759-0.313t-0.313-0.759v-2.143q0-0.446 0.313-0.759t0.759-0.313h4.643v-4.643q0-0.446 0.313-0.759t0.759-0.313h2.143q0.446 0 0.759 0.313t0.313 0.759v4.643h4.643q0.446 0 0.759 0.313t0.313 0.759z"></path></svg>
+					</button>
+				</header>
+				<!-- uncompleted tasks -->
+				<ul id="todoList" class="todo">
+					<li>
+						Learn JavaScript
+						<div class="todo__buttons">
+							<button class="remove" id="defaultRemove">
+								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="20" viewBox="0 0 16 20"><path class="fill" d="M5.714 8.214v6.429q0 0.156-0.1 0.257t-0.257 0.1h-0.714q-0.156 0-0.257-0.1t-0.1-0.257v-6.429q0-0.156 0.1-0.257t0.257-0.1h0.714q0.156 0 0.257 0.1t0.1 0.257zM8.571 8.214v6.429q0 0.156-0.1 0.257t-0.257 0.1h-0.714q-0.156 0-0.257-0.1t-0.1-0.257v-6.429q0-0.156 0.1-0.257t0.257-0.1h0.714q0.156 0 0.257 0.1t0.1 0.257zM11.429 8.214v6.429q0 0.156-0.1 0.257t-0.257 0.1h-0.714q-0.156 0-0.257-0.1t-0.1-0.257v-6.429q0-0.156 0.1-0.257t0.257-0.1h0.714q0.156 0 0.257 0.1t0.1 0.257zM12.857 16.295v-10.58h-10v10.58q0 0.246 0.078 0.452t0.162 0.301 0.117 0.095h9.286q0.033 0 0.117-0.095t0.162-0.301 0.078-0.452zM5.357 4.286h5l-0.536-1.306q-0.078-0.1-0.19-0.123h-3.538q-0.112 0.022-0.19 0.123zM15.714 4.643v0.714q0 0.156-0.1 0.257t-0.257 0.1h-1.071v10.58q0 0.926-0.525 1.602t-1.261 0.675h-9.286q-0.737 0-1.261-0.653t-0.525-1.579v-10.625h-1.071q-0.156 0-0.257-0.1t-0.1-0.257v-0.714q0-0.156 0.1-0.257t0.257-0.1h3.449l0.781-1.864q0.167-0.413 0.603-0.703t0.882-0.29h3.571q0.446 0 0.882 0.29t0.603 0.703l0.781 1.864h3.449q0.156 0 0.257 0.1t0.1 0.257z"></path></svg>
+							</button>
+							<button class="complete" id="defaultComplete">
+								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20"><path class="fill" d="M18.65 6.317q0 0.446-0.313 0.759l-9.598 9.598q-0.313 0.313-0.759 0.313t-0.759-0.313l-5.558-5.558q-0.313-0.313-0.313-0.759t0.313-0.759l1.518-1.518q0.313-0.313 0.759-0.313t0.759 0.313l3.281 3.292 7.321-7.333q0.313-0.313 0.759-0.313t0.759 0.313l1.518 1.518q0.313 0.313 0.313 0.759z"></path></svg>
+							</button>
+						</div>
+					</li>
+				</ul>
+				<!-- completed tasks -->
+				<ul id="todoCompleted" class="todo completed"></ul>
+			</section>
+		</main>
+		<aside class="container">
+			<a href="http://bludesign.pl/portfolio/">go back to portfolio</a>
+		</aside>
+		<footer>
+			<p>MADE with <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20"><path class="fill" d="M18.571 6.652q0-0.904-0.24-1.596t-0.614-1.099-0.91-0.664-1.049-0.346-1.094-0.089-1.25 0.285-1.233 0.714-0.965 0.804-0.67 0.686q-0.201 0.246-0.547 0.246t-0.547-0.246q-0.268-0.313-0.67-0.686t-0.965-0.804-1.233-0.714-1.25-0.285-1.094 0.089-1.049 0.346-0.91 0.664-0.614 1.099-0.24 1.596q0 1.875 2.087 3.962l6.484 6.25 6.473-6.239q2.098-2.098 2.098-3.973zM20 6.652q0 2.467-2.556 5.022l-6.953 6.696q-0.201 0.201-0.491 0.201t-0.491-0.201l-6.964-6.719q-0.112-0.089-0.307-0.29t-0.619-0.731-0.759-1.088-0.597-1.35-0.262-1.54q0-2.455 1.417-3.839t3.917-1.384q0.692 0 1.412 0.24t1.339 0.647 1.066 0.765 0.848 0.759q0.402-0.402 0.848-0.759t1.066-0.765 1.339-0.647 1.412-0.24q2.5 0 3.917 1.384t1.417 3.839z"></path></svg> by <a href="http://bludesign.pl/" target="_blank">bludesign.pl</a> 2016 &copy;</p>
+		</footer>
+	</div>
+	<!-- JavaScript -->
+	<script src="dist/js/script.min.js"></script>
+</body>
+</html>

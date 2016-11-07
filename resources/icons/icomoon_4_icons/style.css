@@ -1,0 +1,32 @@
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.icon-name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+
+.icon-check {
+  width: 1.0000000596046448em;
+}
+
+.icon-trash-o {
+  width: 0.7857138803228736em;
+}
+
+.icon-plus {
+  width: 0.785714827477932em;
+}
+
+.icon-heart-o {
+  width: 1.0000009778887033em;
+}
