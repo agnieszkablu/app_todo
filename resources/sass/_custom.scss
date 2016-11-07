@@ -25,10 +25,14 @@ a{
 
 // headings styles
 @for $i from 1 through 3{
-	.#{h}#{$i}{
+	#{h}#{$i}{
 		font-size: $h1-size - ($i * 0.5);
-		color: $primary-color-text;
+		
 	}
+}
+h1{
+	padding: 15px;
+	color: $secondary-text-color;
 }
 .container{
 	max-width: 1200px;
@@ -44,12 +48,12 @@ a{
 }
 .todo-app,
 .readme{
-	flex-basis: calc(50% - 20px);
+	flex-basis: 100%;
 	margin: 10px;
 	background-color: $primary-color;
 }
 .readme{
-	padding: 0 0 15px 15px;
+	padding: 15px;
 	h2{
 		text-decoration: underline;;
 	}
@@ -291,5 +295,14 @@ footer{
 	font-size: 80%;
 	.fill{
 		fill: $accent-color;
+	}
+}
+@media screen and ( min-width: 768px ) {
+	.todo-app,
+	.readme{
+		flex-basis: calc(50% - 20px);
+	}
+	.readme{
+		padding: 0 0 15px 15px;
 	}
 }
