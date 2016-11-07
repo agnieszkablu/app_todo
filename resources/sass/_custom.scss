@@ -22,6 +22,7 @@ a{
 		color: $accent-color;
 	}
 }
+
 // headings styles
 @for $i from 1 through 3{
 	.#{h}#{$i}{
@@ -39,12 +40,22 @@ a{
 	display: flex;
 	flex-wrap: wrap;
 	background-color: $divider-color;
-	color: $primary-color-text;
+	color: $primary-text-color;
 }
-.todo-app{
+.todo-app,
+.readme{
 	flex-basis: calc(50% - 20px);
 	margin: 10px;
 	background-color: $primary-color;
+}
+.readme{
+	padding: 0 0 15px 15px;
+	h2{
+		text-decoration: underline;;
+	}
+	h3{
+		margin-bottom: 0.3em;
+	}
 }
 .todo-app__header{
 	width: 100%;
@@ -146,6 +157,24 @@ ul.todo{
 		&:last-of-type{
 			margin: 0;
 		}
+		input{
+			display: none;
+			border: 0;
+			outline: 0;
+		}
+		span{
+			display: block;
+		}
+		//for editing items on the list
+		&.edit{
+			input{
+				display: block;
+			}
+			span{
+				display: none;
+			}
+		}
+
 	}
 	.todo__buttons{
 		width: 100px;

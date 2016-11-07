@@ -37,12 +37,35 @@ function completeItems() {
 	target.insertBefore(item, target.childNodes[0]);
 
 }
+// Edit mode for items on the list
+function editMode(){
+	this.className = 'edit';
+	var input = this.querySelector('input');
+	input.focus();
+	input.setSelectionRange(0, input.value.length);
+}
+// Update item on blur
+function updateItem(){
+	this.previousElementSibling.innerHTML = this.value;
+	this.parentNode.className = '';
+}
 // Add a new item to todo list
 function addActivity(text) {
 	var list = document.querySelector('#todoList');
 
 	var listItem = document.createElement('li');
-	listItem.innerText = text;
+	//listItem.innerText = text;
+	//add click event to eneble edit mode
+	listItem.addEventListener('click', editMode);
+	
+	//create input for text
+	var listSpan = document.createElement('span');
+	listSpan.innerText = text;
+	
+
+	//create input for text
+	var listInput = document.createElement('input');
+	listInput.addEventListener('blur', updateItem);
 
 	var buttons = document.createElement('div');
 	buttons.classList.add('todo__buttons');
@@ -61,7 +84,10 @@ function addActivity(text) {
 
 	buttons.appendChild(remove);
 	buttons.appendChild(complete);
+	listItem.appendChild(listSpan);
+	listItem.appendChild(listInput);
 	listItem.appendChild(buttons);
+	
 	// insert new list item before the previouse ones
 	list.insertBefore(listItem, list.childNodes[0]);
 }
