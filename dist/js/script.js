@@ -39,8 +39,8 @@ function completeItems() {
 }
 // Edit mode for items on the list
 function editMode(){
-	this.className = 'edit';
-	var input = this.querySelector('input');
+	this.parentNode.className = 'edit';
+	var input = this.parentNode.querySelector('input');
 	input.focus();
 	input.setSelectionRange(0, input.value.length);
 }
@@ -55,16 +55,17 @@ function addActivity(text) {
 
 	var listItem = document.createElement('li');
 	//listItem.innerText = text;
-	//add click event to eneble edit mode
-	listItem.addEventListener('click', editMode);
+
 	
 	//create input for text
 	var listSpan = document.createElement('span');
 	listSpan.innerText = text;
-	
+	//add click event to eneble edit mode
+	listSpan.addEventListener('click', editMode);
 
 	//create input for text
 	var listInput = document.createElement('input');
+	
 	listInput.addEventListener('blur', updateItem);
 
 	var buttons = document.createElement('div');
